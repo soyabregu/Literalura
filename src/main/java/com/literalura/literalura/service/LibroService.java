@@ -48,4 +48,23 @@ public class LibroService {
                 System.out.println(" No se encontraron libros con ese título.");
             }
         }
+
+    public void listarLibros() {
+        List<Libro> libros = libroRepository.findAll();//traigo la info de la bd
+
+        if (libros.isEmpty()) {
+            System.out.println("No hay libros registrados todavía.");
+        } else {
+            System.out.println(" Libros registrados:");
+            libros.forEach(libro -> {
+                System.out.println(" " + libro.getTitulo() +
+                        "  Autor: " + libro.getAutor() +
+                        "  Idioma: " + libro.getIdioma() +
+                        "  Descargas: " + libro.getNumeroDeDescargas());
+            });
+        }
+    }
+
+
+
 }
